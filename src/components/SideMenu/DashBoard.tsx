@@ -16,7 +16,7 @@ type Props = {
   index: number;
 };
 
-const SideMenu: React.FC<Props> = ({ index }) => {
+const DashBoard: React.FC<Props> = ({ index }) => {
   const { t } = useLocale();
 
   return (
@@ -66,4 +66,4 @@ const SideMenu: React.FC<Props> = ({ index }) => {
   );
 };
 
-export default SideMenu;
+export default DashBoard;

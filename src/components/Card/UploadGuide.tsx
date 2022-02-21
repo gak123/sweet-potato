@@ -28,13 +28,23 @@ const UploadGuide: React.FC = () => {
           </Heading>
           <UnorderedList>
             <ListItem>
+              <Link href="/tos" isExternal color="potato" fontWeight={700}>
+                {t.DOCUMENTS.TAP.TOS}
+              </Link>
+            </ListItem>
+            <ListItem>
               <Link
                 href="https://potato.purplepalette.net/help/publish-fumen-rules"
                 isExternal
                 color="potato"
                 fontWeight={700}
               >
-                {useLocaleValue({ ja: '投稿ガイドライン', en: 'Required Things' })}
+                {useLocaleValue({
+                  ja: '投稿ガイドライン',
+                  en: 'Upload Guideline',
+                  zh: 'Upload Guideline',
+                  kr: 'Upload Guideline',
+                })}
               </Link>
             </ListItem>
           </UnorderedList>
@@ -49,19 +59,34 @@ const UploadGuide: React.FC = () => {
             <ListItem>
               <WikiLink
                 path="/create-charts/required-things"
-                text={useLocaleValue({ ja: '必要なもの', en: 'Required Things' })}
+                text={useLocaleValue({
+                  ja: '必要なもの',
+                  en: 'Required Things',
+                  zh: 'Required Things',
+                  kr: 'Required Things',
+                })}
               />
             </ListItem>
             <ListItem>
               <WikiLink
                 path="/create-charts/copyrights"
-                text={useLocaleValue({ ja: '著作権', en: 'Copyrights' })}
+                text={useLocaleValue({
+                  ja: '著作権',
+                  en: 'Copyrights',
+                  zh: 'Copyrights',
+                  kr: 'Copyrights',
+                })}
               />
             </ListItem>
             <ListItem>
               <WikiLink
                 path="/create-charts/editor"
-                text={useLocaleValue({ ja: '制作ツール', en: 'Chart Editor' })}
+                text={useLocaleValue({
+                  ja: '制作ツール',
+                  en: 'Chart Editor',
+                  zh: 'Chart Editor',
+                  kr: 'Chart Editor',
+                })}
               />
             </ListItem>
           </UnorderedList>
