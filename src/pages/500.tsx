@@ -8,14 +8,14 @@ const NotFound: React.FC = () => {
   const { t } = useLocale();
   return (
     <>
-      <SEO path="/404" title="404" description="" thumbnail="" allowIndex={false} />
+      <SEO path="/500" title="500" description="" thumbnail="" allowIndex={false} />
       <PagesMenu />
       <Container variant="withMenu" centerContent>
         <Box pt={16}>
-          <Heading fontSize={['4em', '5em', '6em']}>404</Heading>
+          <Heading fontSize={['4em', '5em', '6em']}>500</Heading>
         </Box>
         <Box>
-          <Text>{t.PAGE_ERROR['404']}</Text>
+          <Text>{t.PAGE_ERROR['500']}</Text>
         </Box>
       </Container>
     </>

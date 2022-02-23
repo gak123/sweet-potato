@@ -1,4 +1,8 @@
 export default {
+  PAGE_ERROR: {
+    '404': 'お探しのページは見つかりませんでした。',
+    '500': 'サーバーでエラーが発生しました。',
+  },
   HEADER: {
     MYPAGE: '个人主页',
     UPLOAD: '上传',

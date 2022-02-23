@@ -20,7 +20,7 @@ import { Level } from 'framework/potato/legacy/@types';
 import SEO from 'components/SEO';
 import SideMenu from 'components/SideMenu/DashBoard';
 
-const MyPage: React.FC = () => {
+const LevelList: React.FC = () => {
   const [levels, setLevels] = useState<Level[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
@@ -51,7 +51,7 @@ const MyPage: React.FC = () => {
   return (
     <>
       <SEO
-        path="/dashboard/contents/levels"
+        path="/dashboard/contents/levels/list"
         title={t.DASHBOARD.CONTENTS.LEVELS.PAGE_TITLE}
         description=""
         thumbnail=""
@@ -115,10 +115,10 @@ const MyPage: React.FC = () => {
                           onClick={() => {
                             router.push(
                               {
-                                pathname: `/levels/${level.name}/edit`,
-                                query: { uid: profile.uid },
+                                pathname: '/dashboard/contents/levels/edit',
+                                query: { id: level.name, uid: profile.uid },
                               },
-                              `/levels/${level.name}/edit`,
+                              '/dashboard/contents/levels/edit',
                             );
                           }}
                         >
@@ -137,4 +137,4 @@ const MyPage: React.FC = () => {
   );
 };
 
-export default MyPage;
+export default LevelList;

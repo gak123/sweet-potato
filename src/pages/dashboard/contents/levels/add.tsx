@@ -26,7 +26,7 @@ type fileName = {
   uploaded: string;
 };
 
-const Upload: React.FC = () => {
+const LevelAdd: React.FC = () => {
   const router = useRouter();
   const { t } = useLocale();
   const { user, status, profile } = useAuth();
@@ -111,7 +111,7 @@ const Upload: React.FC = () => {
     });
 
     if (res.status === 200) {
-      router.push('/dashboard/contents/levels');
+      router.push('/dashboard/contents/levels/list');
     } else {
       alert(t.UPLOAD_ERROR.OTHER);
     }
@@ -120,7 +120,7 @@ const Upload: React.FC = () => {
   return (
     <>
       <SEO
-        path="/levels/upload"
+        path="/dashboard/contents/levels/add"
         title={t.UPLOAD_PAGE.PAGE_TITLE}
         description=""
         thumbnail=""
@@ -227,4 +227,4 @@ const Upload: React.FC = () => {
   );
 };
 
-export default Upload;
+export default LevelAdd;

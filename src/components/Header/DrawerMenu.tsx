@@ -37,7 +37,9 @@ const DrawerMenu: React.FC = () => {
   const { status } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t, locale } = useLocale();
+
   const router = useRouter();
+  const { pathname, asPath, query } = router;
 
   return (
     <>
@@ -79,7 +81,7 @@ const DrawerMenu: React.FC = () => {
                           <UserIcon />
                         </Box>
                         <SimpleGrid spacing={2}>
-                          <Link href="/levels/upload">
+                          <Link href="/dashboard/contents/levels/add">
                             <Button
                               leftIcon={<FiUploadCloud />}
                               bgColor="potato"
@@ -89,7 +91,7 @@ const DrawerMenu: React.FC = () => {
                               {t.HEADER.UPLOAD}
                             </Button>
                           </Link>
-                          <Link href="/dashboard/contents/levels">
+                          <Link href="/dashboard/contents/levels/list">
                             <Button leftIcon={<FaUser />} color="white" bgColor="pink" width="full">
                               {t.HEADER.MYPAGE}
                             </Button>
@@ -119,7 +121,7 @@ const DrawerMenu: React.FC = () => {
                       type="radio"
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       onChange={(value: any) =>
-                        router.push(router.pathname, router.pathname, { locale: value })
+                        router.push({ pathname, query }, asPath, { locale: value })
                       }
                     >
                       <MenuItemOption value="ja">日本語</MenuItemOption>

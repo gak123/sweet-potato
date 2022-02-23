@@ -38,7 +38,7 @@ type fileName = {
   uploaded: string;
 };
 
-const Upload: React.FC<Level> = ({ name, title, artists, author, rating }) => {
+const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) => {
   const router = useRouter();
   const { t } = useLocale();
   const { user, status, profile } = useAuth();
@@ -286,7 +286,7 @@ const Upload: React.FC<Level> = ({ name, title, artists, author, rating }) => {
   );
 };
 
-export default Upload;
+export default LevelEdit;
 
 const UpdateModal: React.FC<{ opened: boolean; onClose: () => void; id: string }> = ({
   opened,
