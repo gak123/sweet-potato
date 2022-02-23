@@ -36,7 +36,7 @@ const Home: React.FC = () => {
       <PagesMenu />
       <Container variant="withMenu">
         <Box mb={24} textAlign="center">
-          <Heading mt={8} fontSize={['2em', '2.4em', '2.4em', '2.4em', '2.8em', '3.2em']}>
+          <Heading mt={16} fontSize={['2em', '2.4em', '2.4em', '2.4em', '2.8em', '3.2em']}>
             Fan-made
             <br />
             Rhythm Game Community

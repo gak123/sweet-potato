@@ -1,4 +1,12 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: 'Scores',
+    ENGINES: 'Engines',
+    EFFECTS: 'Effects',
+    BACKGROUNDS: 'Backgrounds',
+    SKINS: 'Skins',
+    PARTICLES: 'Particles',
+  },
   PAGE_ERROR: {
     '404': 'お探しのページは見つかりませんでした。',
     '500': 'サーバーでエラーが発生しました。',

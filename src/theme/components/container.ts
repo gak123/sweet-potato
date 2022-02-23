@@ -11,7 +11,7 @@ const variants = {
     p: { base: 8, xl: 0 },
   },
   withMenu: {
-    pt: '140px',
+    pt: { base: '115px', xl: '140px' },
   },
 };
 

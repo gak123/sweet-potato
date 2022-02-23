@@ -29,11 +29,10 @@ const HeaderNav: React.FC = () => {
 
   return (
     <Flex
-      mb={8}
       px={[4, 4, 8, 8, 16]}
-      py={5}
+      py={{ base: 2, xl: 5 }}
       w="full"
-      h="85px"
+      h={{ base: '60px', xl: '85px' }}
       align="center"
       bgColor={useColorModeValue('bodyBg.light', 'bodyBg.dark')}
       userSelect="none"

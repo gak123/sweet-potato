@@ -40,7 +40,7 @@ const New: React.FC = () => {
       />
       <PagesMenu />
       <Container variant="withMenu">
-        <Heading mt={[4, 4, 4, 4, 6]} mb={[6, 6, 6, 6, 8]} fontSize="1.4em" textAlign="center">
+        <Heading my={16} fontSize="1.4em" textAlign="center">
           {t.TOP_PAGE.NEW_SCORE_LIST}
         </Heading>
 

@@ -1,4 +1,12 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: '譜面',
+    ENGINES: 'エンジン',
+    EFFECTS: 'エフェクト',
+    BACKGROUNDS: '背景',
+    SKINS: 'スキン',
+    PARTICLES: 'パーティクル',
+  },
   PAGE_ERROR: {
     '404': 'お探しのページは見つかりませんでした。',
     '500': 'サーバーでエラーが発生しました。',
