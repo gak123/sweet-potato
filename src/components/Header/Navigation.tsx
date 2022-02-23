@@ -8,6 +8,7 @@ import {
   Button,
   Spinner,
 } from '@chakra-ui/react';
+import { Icon } from '@iconify/react';
 import { useAuth } from 'hooks/auth';
 import { FaUser } from 'react-icons/fa';
 import { useLocale } from 'hooks/locales';
@@ -50,6 +51,13 @@ const HeaderNav: React.FC = () => {
       </Flex>
       <Spacer />
       <Flex align="center" style={{ visibility: visible ? 'visible' : 'hidden' }}>
+        <Box>
+          <Link href="/search">
+            <Box fontSize="1.6em">
+              <Icon icon="mdi:magnify" />
+            </Box>
+          </Link>
+        </Box>
         {!status.isLoaded ? (
           <Flex align="center" fontSize="1em" w="5em">
             <Spinner size="sm" color="potato" />

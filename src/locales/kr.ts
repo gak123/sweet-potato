@@ -11,6 +11,10 @@ export default {
     '404': 'お探しのページは見つかりませんでした。',
     '500': 'サーバーでエラーが発生しました。',
   },
+  SEARCH: {
+    TITLE: 'Search',
+    KEYWORD: 'Keyword',
+  },
   HEADER: {
     MYPAGE: '마이페이지',
     UPLOAD: '업로드',
