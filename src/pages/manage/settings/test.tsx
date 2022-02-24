@@ -50,7 +50,7 @@ const Test: React.FC = () => {
   return (
     <>
       <SEO
-        path="/dashboard/settings/test"
+        path="/manage/settings/test"
         title={t.DASHBOARD.SETTINGS.TEST.PAGE_TITLE}
         description=""
         thumbnail=""

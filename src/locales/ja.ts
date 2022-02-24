@@ -1,4 +1,20 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: '譜面',
+    ENGINES: 'エンジン',
+    EFFECTS: 'エフェクト',
+    BACKGROUNDS: '背景',
+    SKINS: 'スキン',
+    PARTICLES: 'パーティクル',
+  },
+  PAGE_ERROR: {
+    '404': 'お探しのページは見つかりませんでした。',
+    '500': 'サーバーでエラーが発生しました。',
+  },
+  SEARCH: {
+    TITLE: '検索',
+    KEYWORD: 'キーワード',
+  },
   HEADER: {
     MYPAGE: 'マイページ',
     UPLOAD: '投稿',
@@ -26,6 +42,7 @@ export default {
     TITLE: 'タイトル',
     ARTISTS: 'アーティスト',
     AUTHOR: '譜面の作者',
+    DESCRIPTION: '譜面の詳細',
     GENRE: 'ジャンル',
     RATING: '譜面の難しさ',
   },

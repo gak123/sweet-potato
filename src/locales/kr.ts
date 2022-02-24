@@ -1,4 +1,20 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: 'Scores',
+    ENGINES: 'Engines',
+    EFFECTS: 'Effects',
+    BACKGROUNDS: 'Backgrounds',
+    SKINS: 'Skins',
+    PARTICLES: 'Particles',
+  },
+  PAGE_ERROR: {
+    '404': 'お探しのページは見つかりませんでした。',
+    '500': 'サーバーでエラーが発生しました。',
+  },
+  SEARCH: {
+    TITLE: 'Search',
+    KEYWORD: 'Keyword',
+  },
   HEADER: {
     MYPAGE: '마이페이지',
     UPLOAD: '업로드',
@@ -26,6 +42,7 @@ export default {
     TITLE: '제목',
     ARTISTS: '아티스트',
     AUTHOR: '채보제작자',
+    DESCRIPTION: '譜面の詳細',
     GENRE: '장르',
     RATING: '채보의 난이도',
   },

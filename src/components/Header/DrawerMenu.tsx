@@ -37,25 +37,27 @@ const DrawerMenu: React.FC = () => {
   const { status } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t, locale } = useLocale();
+
   const router = useRouter();
+  const { pathname, asPath, query } = router;
 
   return (
     <>
-      <Box ml={3} boxSize="40px">
-        <Button
-          id="drawer"
-          p={0}
-          borderRadius="circle"
-          onClick={onOpen}
-          color={useColorModeValue('heading.light', 'heading.daark')}
-          _focus={{ boxShadow: 'focus' }}
-        >
-          <Flex align="center" justify="center" boxSize="40px">
+      <Box boxSize={{ base: '32px', lg: '40px' }}>
+        <Flex w="full" h="full" align="center" justify="center">
+          <Button
+            boxSize="full"
+            borderRadius="circle"
+            id="drawer"
+            onClick={onOpen}
+            color={useColorModeValue('heading.light', 'heading.daark')}
+            _focus={{ boxShadow: 'focus' }}
+          >
             <Icon as={FiMenu} fontSize="1.5em" />
-          </Flex>
-        </Button>
+          </Button>
+        </Flex>
       </Box>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose} autoFocus={false}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} autoFocus={false}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />
@@ -79,7 +81,7 @@ const DrawerMenu: React.FC = () => {
                           <UserIcon />
                         </Box>
                         <SimpleGrid spacing={2}>
-                          <Link href="/levels/upload">
+                          <Link href="/manage/contents/levels/add">
                             <Button
                               leftIcon={<FiUploadCloud />}
                               bgColor="potato"
@@ -89,7 +91,7 @@ const DrawerMenu: React.FC = () => {
                               {t.HEADER.UPLOAD}
                             </Button>
                           </Link>
-                          <Link href="/dashboard/contents/levels">
+                          <Link href="/manage/contents/levels/list">
                             <Button leftIcon={<FaUser />} color="white" bgColor="pink" width="full">
                               {t.HEADER.MYPAGE}
                             </Button>
@@ -119,12 +121,12 @@ const DrawerMenu: React.FC = () => {
                       type="radio"
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       onChange={(value: any) =>
-                        router.push(router.pathname, router.pathname, { locale: value })
+                        router.push({ pathname, query }, asPath, { locale: value })
                       }
                     >
                       <MenuItemOption value="ja">日本語</MenuItemOption>
                       <MenuItemOption value="en">English</MenuItemOption>
-                      <MenuItemOption value="zh">中国語</MenuItemOption>
+                      <MenuItemOption value="zh">中文</MenuItemOption>
                       <MenuItemOption value="kr">한국어</MenuItemOption>
                     </MenuOptionGroup>
                   </MenuList>

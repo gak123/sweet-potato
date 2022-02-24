@@ -12,7 +12,7 @@ import {
   GridItem,
   Flex,
 } from '@chakra-ui/react';
-import { FiEdit } from 'react-icons/fi';
+import { FiEdit, FiUploadCloud } from 'react-icons/fi';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useAuth } from 'hooks/auth';
 import { clientLegacy } from 'framework/potato/client';
@@ -20,7 +20,7 @@ import { Level } from 'framework/potato/legacy/@types';
 import SEO from 'components/SEO';
 import SideMenu from 'components/SideMenu/DashBoard';
 
-const MyPage: React.FC = () => {
+const LevelList: React.FC = () => {
   const [levels, setLevels] = useState<Level[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
@@ -40,7 +40,6 @@ const MyPage: React.FC = () => {
       return;
     }
 
-    console.log(res.items[0]);
     setLevels([...levels, ...res.items]);
   };
 
@@ -51,7 +50,7 @@ const MyPage: React.FC = () => {
   return (
     <>
       <SEO
-        path="/dashboard/contents/levels"
+        path="/manage/contents/levels/list"
         title={t.DASHBOARD.CONTENTS.LEVELS.PAGE_TITLE}
         description=""
         thumbnail=""
@@ -65,10 +64,22 @@ const MyPage: React.FC = () => {
         </GridItem>
         <GridItem mx={{ base: 0, xl: 8 }} colSpan={{ base: 1, xl: 3, '2xl': 4 }}>
           <Container variant="dashboard">
-            <Heading mt={[4, 4, 4, 4, 6]} mb={[6, 6, 6, 6, 8]} fontSize="1.4em">
-              {t.DASHBOARD.CONTENTS.LEVELS.PAGE_TITLE}
-            </Heading>
-
+            <Flex align="center" justify="space-between">
+              <Heading my={8} fontSize="1.4em" lineHeight={1}>
+                {t.DASHBOARD.CONTENTS.LEVELS.PAGE_TITLE}
+              </Heading>
+              <Button
+                leftIcon={<FiUploadCloud />}
+                bgColor="potato"
+                color="white"
+                width="100px"
+                onClick={() => {
+                  router.push('/manage/contents/levels/add');
+                }}
+              >
+                {t.HEADER.UPLOAD}
+              </Button>
+            </Flex>
             <InfiniteScroll pageStart={-1} loadMore={fetchMyLevels} hasMore={hasMore}>
               <Grid
                 my={8}
@@ -115,10 +126,10 @@ const MyPage: React.FC = () => {
                           onClick={() => {
                             router.push(
                               {
-                                pathname: `/levels/${level.name}/edit`,
-                                query: { uid: profile.uid },
+                                pathname: '/manage/contents/levels/edit',
+                                query: { id: level.name, uid: profile.uid },
                               },
-                              `/levels/${level.name}/edit`,
+                              '/manage/contents/levels/edit',
                             );
                           }}
                         >
@@ -137,4 +148,4 @@ const MyPage: React.FC = () => {
   );
 };
 
-export default MyPage;
+export default LevelList;

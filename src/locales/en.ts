@@ -1,4 +1,20 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: 'Scores',
+    ENGINES: 'Engines',
+    EFFECTS: 'Effects',
+    BACKGROUNDS: 'Backgrounds',
+    SKINS: 'Skins',
+    PARTICLES: 'Particles',
+  },
+  PAGE_ERROR: {
+    '404': 'Page was not found.',
+    '500': 'サーバーでエラーが発生しました。',
+  },
+  SEARCH: {
+    TITLE: 'Search',
+    KEYWORD: 'Keyword',
+  },
   HEADER: {
     MYPAGE: 'My page',
     UPLOAD: 'Upload',
@@ -26,6 +42,7 @@ export default {
     TITLE: 'Title',
     ARTISTS: 'Artists',
     AUTHOR: 'Score Author',
+    DESCRIPTION: '譜面の詳細',
     GENRE: 'Genre',
     RATING: 'Score Rating',
   },

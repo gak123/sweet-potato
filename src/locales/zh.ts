@@ -1,4 +1,20 @@
 export default {
+  PAGES_MENU: {
+    LEVELS: 'Scores',
+    ENGINES: 'Engines',
+    EFFECTS: 'Effects',
+    BACKGROUNDS: 'Backgrounds',
+    SKINS: 'Skins',
+    PARTICLES: 'Particles',
+  },
+  PAGE_ERROR: {
+    '404': 'お探しのページは見つかりませんでした。',
+    '500': 'サーバーでエラーが発生しました。',
+  },
+  SEARCH: {
+    TITLE: 'Search',
+    KEYWORD: 'Keyword',
+  },
   HEADER: {
     MYPAGE: '个人主页',
     UPLOAD: '上传',
@@ -26,6 +42,7 @@ export default {
     TITLE: '标题',
     ARTISTS: '作曲者',
     AUTHOR: '谱师',
+    DESCRIPTION: '譜面の詳細',
     GENRE: '分类',
     RATING: '谱面评分',
   },
