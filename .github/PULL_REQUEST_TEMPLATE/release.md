@@ -1,8 +1,3 @@
----
-name: Release
-about: New Update!
----
-
 ## 🚀 New feature
 
 -

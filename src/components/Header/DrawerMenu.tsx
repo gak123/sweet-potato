@@ -43,21 +43,21 @@ const DrawerMenu: React.FC = () => {
 
   return (
     <>
-      <Box ml={3} boxSize="40px">
-        <Button
-          id="drawer"
-          p={0}
-          borderRadius="circle"
-          onClick={onOpen}
-          color={useColorModeValue('heading.light', 'heading.daark')}
-          _focus={{ boxShadow: 'focus' }}
-        >
-          <Flex align="center" justify="center" boxSize="40px">
+      <Box boxSize={{ base: '32px', lg: '40px' }}>
+        <Flex w="full" h="full" align="center" justify="center">
+          <Button
+            boxSize="full"
+            borderRadius="circle"
+            id="drawer"
+            onClick={onOpen}
+            color={useColorModeValue('heading.light', 'heading.daark')}
+            _focus={{ boxShadow: 'focus' }}
+          >
             <Icon as={FiMenu} fontSize="1.5em" />
-          </Flex>
-        </Button>
+          </Button>
+        </Flex>
       </Box>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose} autoFocus={false}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} autoFocus={false}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />

@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {
-  useMediaQuery,
-  Flex,
-  Box,
-  useColorModeValue,
-  Spacer,
-  Button,
-  Spinner,
-} from '@chakra-ui/react';
+import { useMediaQuery, Flex, Box, useColorModeValue, Spacer, Spinner } from '@chakra-ui/react';
 import { Icon } from '@iconify/react';
 import { useAuth } from 'hooks/auth';
-import { FaUser } from 'react-icons/fa';
-import { useLocale } from 'hooks/locales';
-
 import Logo from 'components/Header/Logo';
 import Login from 'components/Buttons/Login';
 import Link from 'components/Link';
-import DrawerMenu from './DrawerMenu';
+import DrawerMenu from 'components/Header/DrawerMenu';
+import UserIconMenu from 'components/Header/UserIconMenu';
 
 const HeaderNav: React.FC = () => {
-  const { status } = useAuth();
-  const { t } = useLocale();
+  const { status, profile } = useAuth();
   const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -30,59 +19,58 @@ const HeaderNav: React.FC = () => {
 
   return (
     <Flex
-      px={[4, 4, 8, 8, 16]}
-      py={{ base: 2, xl: 5 }}
+      px={[2, 4, 8, 8, 16]}
       w="full"
       h={{ base: '60px', xl: '85px' }}
       align="center"
-      bgColor={useColorModeValue('bodyBg.light', 'bodyBg.dark')}
-      userSelect="none"
       position="fixed"
       zIndex={10}
       borderBottom="1px"
       borderColor={useColorModeValue('componentBg.light', 'componentBg.dark')}
+      bgColor={useColorModeValue('bodyBg.light', 'bodyBg.dark')}
+      userSelect="none"
     >
-      <Flex align="center">
-        <Box>
-          <Link href="/">
-            <Logo />
-          </Link>
-        </Box>
+      <Flex h={{ base: '32px', lg: '40px' }}>
+        <Flex align="center" gap={4}>
+          <Box>
+            <DrawerMenu />
+          </Box>
+          <Box>
+            <Link href="/">
+              <Logo />
+            </Link>
+          </Box>
+        </Flex>
       </Flex>
       <Spacer />
-      <Flex align="center" style={{ visibility: visible ? 'visible' : 'hidden' }}>
-        <Box>
-          <Link href="/search">
-            <Box fontSize="1.6em">
-              <Icon icon="mdi:magnify" />
-            </Box>
-          </Link>
-        </Box>
-        {!status.isLoaded ? (
-          <Flex align="center" fontSize="1em" w="5em">
-            <Spinner size="sm" color="potato" />
-          </Flex>
-        ) : (
-          <>
-            {status.isAuthed ? (
-              <Box mx={[0, 2, 4]} fontSize="1em" w="8em">
-                <Link href="/dashboard/contents/levels/list">
-                  <Button leftIcon={<FaUser />} color="white" bgColor="pink" width="full">
-                    {t.HEADER.MYPAGE}
-                  </Button>
-                </Link>
+      <Flex h={{ base: '32px', lg: '40px' }}>
+        <Flex align="center" gap={{ base: 2, lg: 4 }}>
+          <Box>
+            <Link href="/search">
+              <Box fontSize="1.6em">
+                <Icon icon="mdi:magnify" />
               </Box>
+            </Link>
+          </Box>
+          <Box style={{ display: visible ? undefined : 'none' }}>
+            {!status.isLoaded ? (
+              <Flex align="center" justify="center" boxSize="40px">
+                <Spinner size="sm" color="potato" />
+              </Flex>
             ) : (
-              <Box mx={[0, 2, 4]} fontSize="1em" w="7em">
-                <Login />
-              </Box>
+              <>
+                {status.isAuthed ? (
+                  <UserIconMenu {...profile} />
+                ) : (
+                  <Box>
+                    <Login />
+                  </Box>
+                )}
+              </>
             )}
-          </>
-        )}
+          </Box>
+        </Flex>
       </Flex>
-      <Box>
-        <DrawerMenu />
-      </Box>
     </Flex>
   );
 };

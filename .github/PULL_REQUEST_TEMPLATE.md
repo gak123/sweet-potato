@@ -1,8 +1,3 @@
----
-name: Patch & New feature
-about: Want a feature to be added to SweetPotato?
----
-
 <!---
 Thanks for creating Pull Request 💖!
 
