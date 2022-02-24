@@ -42,6 +42,7 @@ export default {
     TITLE: '标题',
     ARTISTS: '作曲者',
     AUTHOR: '谱师',
+    DESCRIPTION: '譜面の詳細',
     GENRE: '分类',
     RATING: '谱面评分',
   },

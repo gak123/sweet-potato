@@ -42,6 +42,7 @@ export default {
     TITLE: '제목',
     ARTISTS: '아티스트',
     AUTHOR: '채보제작자',
+    DESCRIPTION: '譜面の詳細',
     GENRE: '장르',
     RATING: '채보의 난이도',
   },

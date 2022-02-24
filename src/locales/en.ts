@@ -42,6 +42,7 @@ export default {
     TITLE: 'Title',
     ARTISTS: 'Artists',
     AUTHOR: 'Score Author',
+    DESCRIPTION: '譜面の詳細',
     GENRE: 'Genre',
     RATING: 'Score Rating',
   },

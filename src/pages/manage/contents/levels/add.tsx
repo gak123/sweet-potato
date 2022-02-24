@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import { useLocale } from 'hooks/locales';
 import {
@@ -11,34 +10,24 @@ import {
   Grid,
   GridItem,
   List,
-  Switch,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Text,
 } from '@chakra-ui/react';
 import { useAuth } from 'hooks/auth';
-import { BsTwitter } from 'react-icons/bs';
-import { client, clientLegacy } from 'framework/potato/client';
-import { Level } from 'framework/potato/api/@types';
-import { TwitterShareButton } from 'react-share';
+import { clientLegacy } from 'framework/potato/client';
+import UploadGuide from 'components/Card/UploadGuide';
 import InputForm from 'components/Forms/Input';
 import GenreSelect from 'components/Forms/GenreSelect';
 import RateSlider from 'components/Forms/RateSlider';
 import FileInput from 'components/Forms/FileInput';
 import SEO from 'components/SEO';
 import FileList from 'components/Forms/FileList';
+import TextareaForm from 'components/Forms/Textarea';
 
 type fileName = {
   original: string;
   uploaded: string;
 };
 
-const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) => {
+const LevelAdd: React.FC = () => {
   const router = useRouter();
   const { t } = useLocale();
   const { user, status, profile } = useAuth();
@@ -47,16 +36,9 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
   const [bgm, setBgm] = useState<fileName>();
   const [data, setData] = useState<fileName>();
 
-  const [shareModal, setShareModal] = useState<boolean>(false);
-  const [updateModal, setUpdateModal] = useState<boolean>(false);
-
   useEffect(() => {
     if (!status.isAuthed) router.push('/');
-
-    setCover({ original: 'artwork.png', uploaded: 'NOT_CHANGED' });
-    setBgm({ original: 'bgm.mp3', uploaded: 'NOT_CHANGED' });
-    setData({ original: 'data.sus', uploaded: 'NOT_CHANGED' });
-  }, []);
+  });
 
   async function handleUpload(type: string, f: File) {
     if (type == 'LevelData' && !f.name.endsWith('.sus')) {
@@ -93,9 +75,10 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
 
     const tar = e.target;
     const token = await user?.getIdToken();
-    const res = await clientLegacy.levels._levelName(name).patch({
+    const lid = Math.random().toString(32).substring(2);
+    const res = await clientLegacy.levels._levelName(lid).post({
       body: {
-        name: name,
+        name: lid,
         version: 1,
         rating: Number(tar.rate.value),
         engine: 'pjsekai',
@@ -105,45 +88,31 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
         cover: {
           type: 'LevelCover',
           hash: 'temporary',
-          url:
-            cover.uploaded === 'NOT_CHANGED'
-              ? `/repository/${name}/cover.png`
-              : `https://servers-legacy.purplepalette.net/uploads/${cover.uploaded}`,
+          url: `https://servers-legacy.purplepalette.net/uploads/${cover.uploaded}`,
         },
         bgm: {
           type: 'LevelBgm',
           hash: 'temporary',
-          url:
-            bgm.uploaded === 'NOT_CHANGED'
-              ? `/repository/${name}/bgm.mp3`
-              : `https://servers-legacy.purplepalette.net/uploads/${bgm.uploaded}`,
+          url: `https://servers-legacy.purplepalette.net/uploads/${bgm.uploaded}`,
         },
         data: {
           type: 'LevelData',
           hash: 'temporary',
-          url:
-            data.uploaded === 'NOT_CHANGED'
-              ? `/repository/${name}/data.gz`
-              : `https://servers-legacy.purplepalette.net/uploads/${data.uploaded}`,
+          url: `https://servers-legacy.purplepalette.net/uploads/${data.uploaded}`,
         },
         genre: tar.genre.value,
-        public: tar.public.checked,
+        public: false,
         userId: profile.uid,
         notes: 1,
         createdTime: 1,
         updatedTime: 1,
-        description: { ja: ' ' },
+        description: { ja: tar.description.value },
       },
       config: { headers: { Authorization: `Bearer ${token}` } },
     });
 
     if (res.status === 200) {
-      if (tar.public.checked) {
-        setShareModal(true);
-        return;
-      }
-
-      setUpdateModal(true);
+      router.push('/manage/contents/levels/list');
     } else {
       alert(t.UPLOAD_ERROR.OTHER);
     }
@@ -152,31 +121,21 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
   return (
     <>
       <SEO
-        path="/levels/upload"
+        path="/manage/contents/levels/add"
         title={t.UPLOAD_PAGE.PAGE_TITLE}
         description=""
         thumbnail=""
         allowIndex={false}
       />
-      <Container>
-        <form onSubmit={handleSubmit}>
+      <Box bgColor="componentBg.light">
+        <Container px={0} pb={8}>
           <Heading mt={[4, 4, 4, 4, 6]} mb={[6, 6, 6, 6, 8]} fontSize="1.4em" textAlign="center">
-            {t.EDIT_PAGE.PAGE_TITLE}
+            {t.UPLOAD_PAGE.PAGE_TITLE}
           </Heading>
 
           <Grid my={8} templateColumns={{ base: 'repeat(1, 1fr)', xl: 'repeat(3, 1fr)' }} gap={6}>
-            <GridItem colSpan={1}>
-              <Box px={8} border="2px" borderColor="componentBg.light" borderRadius="base">
-                <Box my={8}>
-                  <Heading my={4} fontSize="1.1em">
-                    {t.EDIT_PAGE.PUBLISH}
-                  </Heading>
-                  <Switch id="public" size="lg" />
-                </Box>
-              </Box>
-            </GridItem>
             <GridItem colSpan={{ base: 1, xl: 2 }}>
-              <Box px={8} border="2px" borderColor="componentBg.light" borderRadius="base">
+              <Box px={8} bgColor="bodyBg.light" borderRadius="base">
                 <Box my={2} pt={4} userSelect="none">
                   <Heading my={2} fontSize="1em">
                     {t.UPLOAD_PAGE.SELECT_FILE}
@@ -184,7 +143,7 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
                   <SimpleGrid columns={[1, 1, 3]} spacing={[0, 0, 4]}>
                     <Box style={{ display: cover?.uploaded === undefined ? 'block' : 'none' }}>
                       <FileInput
-                        image="/image.png"
+                        image="/uploads/image.png"
                         text={t.UPLOAD_PAGE.ARTWORK}
                         acceptType="image/jpeg, image/png"
                         callback={async (f: Record<string, File>) => {
@@ -195,7 +154,7 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
                     </Box>
                     <Box style={{ display: bgm?.uploaded === undefined ? 'block' : 'none' }}>
                       <FileInput
-                        image="/cd.png"
+                        image="/uploads/cd.png"
                         text={t.UPLOAD_PAGE.MUSIC_FILE}
                         acceptType="audio/mpeg"
                         callback={async (f: Record<string, File>) => {
@@ -206,7 +165,7 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
                     </Box>
                     <Box style={{ display: data?.uploaded === undefined ? 'block' : 'none' }}>
                       <FileInput
-                        image="/file.png"
+                        image="/uploads/file.png"
                         text={t.UPLOAD_PAGE.SCORE_FILE}
                         acceptType="*"
                         callback={async (f: Record<string, File>) => {
@@ -248,119 +207,37 @@ const LevelEdit: React.FC<Level> = ({ name, title, artists, author, rating }) =>
                   </List>
                 </Box>
                 <Box my={2} pb={4} userSelect="none">
-                  <InputForm
-                    id="title"
-                    value={title}
-                    name={t.FORMS.TITLE}
-                    required={true}
-                    maxLength={50}
-                  />
-                  <InputForm
-                    id="artists"
-                    value={artists}
-                    name={t.FORMS.ARTISTS}
-                    required={true}
-                    maxLength={50}
-                  />
-                  <InputForm
-                    id="author"
-                    value={author}
-                    name={t.FORMS.AUTHOR}
-                    required={true}
-                    maxLength={30}
-                  />
-                  <GenreSelect id="genre" />
-                  <RateSlider id="rate" value={rating} />
-                  <Button my={8} size="full" type="submit" color="white" bgColor="potato">
-                    {t.UPLOAD_PAGE.UPLOAD}
-                  </Button>
+                  <form onSubmit={handleSubmit}>
+                    <InputForm id="title" name={t.FORMS.TITLE} required={true} maxLength={50} />
+                    <InputForm id="artists" name={t.FORMS.ARTISTS} required={true} maxLength={50} />
+                    <InputForm id="author" name={t.FORMS.AUTHOR} required={true} maxLength={30} />
+                    <TextareaForm
+                      id="description"
+                      name={t.FORMS.DESCRIPTION}
+                      required={true}
+                      maxLength={200}
+                    />
+                    <GenreSelect id="genre" />
+                    <RateSlider id="rate" />
+                    <Button my={8} size="full" type="submit" color="white" bgColor="potato">
+                      {t.UPLOAD_PAGE.UPLOAD}
+                    </Button>
+                  </form>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem colSpan={1}>
+              <Box px={8} bgColor="bodyBg.light" borderRadius="base">
+                <Box my={2} pt={4} pb={4}>
+                  <UploadGuide />
                 </Box>
               </Box>
             </GridItem>
           </Grid>
-        </form>
-      </Container>
-      <ShareModal opened={shareModal} onClose={() => setShareModal(false)} id={name} />
-      <UpdateModal opened={updateModal} onClose={() => setUpdateModal(false)} id={name} />
+        </Container>
+      </Box>
     </>
   );
 };
 
-export default LevelEdit;
-
-const UpdateModal: React.FC<{ opened: boolean; onClose: () => void; id: string }> = ({
-  opened,
-  onClose,
-}) => {
-  return (
-    <Modal isOpen={opened} onClose={onClose} isCentered>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>✅ 成功</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Text>譜面情報を更新しました。</Text>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
-};
-
-const ShareModal: React.FC<{ opened: boolean; onClose: () => void; id: string }> = ({
-  opened,
-  onClose,
-  id,
-}) => {
-  return (
-    <Modal isOpen={opened} onClose={onClose} isCentered>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>🎉 譜面が公開されました！</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Box my={8} textAlign="center">
-            <TwitterShareButton
-              url={`${process.env.NEXT_PUBLIC_FRONT_URL}/levels/${id}`}
-              title="新しい譜面を投稿しました！"
-              hashtags={['創作譜面', 'SweetPotato']}
-            >
-              <Button color="white" bgColor="#1DA1F2" size="lg">
-                <Box mr={2}>
-                  <BsTwitter />
-                </Box>
-                ツイートする
-              </Button>
-            </TwitterShareButton>
-          </Box>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
-};
-
-export async function getServerSideProps(context: NextPageContext): Promise<{
-  props?: Level;
-  notFound?: boolean;
-}> {
-  const { id, uid } = context.query;
-
-  const res = await client.users._userId(`${uid}`).levels._levelName(`${id}`).get();
-
-  if (res.status !== 200) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const level = res.body.item;
-
-  return {
-    props: level,
-  };
-}
+export default LevelAdd;

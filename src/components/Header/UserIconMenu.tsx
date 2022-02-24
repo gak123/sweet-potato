@@ -25,7 +25,7 @@ const UserIconMenu: React.FC<profile> = ({ profileImage }) => {
       </MenuButton>
       <MenuList>
         <MenuItem>
-          <Link href="/dashboard/contents/levels/list">
+          <Link href="/manage/contents/levels/list">
             <Text>ダッシュボード</Text>
           </Link>
         </MenuItem>

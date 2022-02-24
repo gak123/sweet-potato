@@ -27,7 +27,7 @@ const DashBoard: React.FC<Props> = ({ index }) => {
       borderBottom="1px"
       borderColor="componentBg.light"
     >
-      <Box mt="100px" w="full">
+      <Box my={8} mt={{ base: '60px', xl: '85px' }} w="full">
         <Accordion px={4} w="full" defaultIndex={index}>
           <AccordionItem>
             <AccordionButton>
@@ -37,7 +37,7 @@ const DashBoard: React.FC<Props> = ({ index }) => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel px={8}>
-              <Link href="/dashboard/contents/levels">
+              <Link href="/manage/contents/levels/list">
                 <Box>
                   <Text>{t.DASHBOARD.CONTENTS.LEVELS.PAGE_TITLE}</Text>
                 </Box>
@@ -53,7 +53,7 @@ const DashBoard: React.FC<Props> = ({ index }) => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel px={8}>
-              <Link href="/dashboard/settings/test">
+              <Link href="/manage/settings/test">
                 <Box>
                   <Text>{t.DASHBOARD.SETTINGS.TEST.PAGE_TITLE}</Text>
                 </Box>

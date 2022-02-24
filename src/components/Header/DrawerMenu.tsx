@@ -81,7 +81,7 @@ const DrawerMenu: React.FC = () => {
                           <UserIcon />
                         </Box>
                         <SimpleGrid spacing={2}>
-                          <Link href="/dashboard/contents/levels/add">
+                          <Link href="/manage/contents/levels/add">
                             <Button
                               leftIcon={<FiUploadCloud />}
                               bgColor="potato"
@@ -91,7 +91,7 @@ const DrawerMenu: React.FC = () => {
                               {t.HEADER.UPLOAD}
                             </Button>
                           </Link>
-                          <Link href="/dashboard/contents/levels/list">
+                          <Link href="/manage/contents/levels/list">
                             <Button leftIcon={<FaUser />} color="white" bgColor="pink" width="full">
                               {t.HEADER.MYPAGE}
                             </Button>

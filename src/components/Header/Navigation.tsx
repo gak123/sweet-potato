@@ -19,7 +19,8 @@ const HeaderNav: React.FC = () => {
 
   return (
     <Flex
-      px={[2, 4, 8, 8, 16]}
+      pl={4}
+      pr={[2, 4, 8, 8, 16]}
       w="full"
       h={{ base: '60px', xl: '85px' }}
       align="center"
