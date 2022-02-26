@@ -1,19 +1,25 @@
 import React from 'react';
 import { Flex, Button } from '@chakra-ui/react';
 import { FiLogOut } from 'react-icons/fi';
-import { useLocaleValue } from 'hooks/locales';
+import { useLocale } from 'hooks/locales';
 import { useAuth } from 'hooks/auth';
+
+import { parseCookies, destroyCookie } from 'nookies';
+import { APIClient } from 'framework/api/api_client';
 
 const Logout: React.FC = () => {
   const { setStatus, setProfile } = useAuth();
+  const { t } = useLocale();
 
-  const revokeToken = (): void => {
-    fetch('/api/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  const revokeToken = async () => {
+    const { token } = parseCookies();
+    const client = new APIClient({
+      token,
+      baseURL: process.env.API,
     });
+
+    await client.auth.postLogout({}).catch();
+    destroyCookie(undefined, 'token');
 
     setStatus({
       isLoaded: true,
@@ -30,7 +36,7 @@ const Logout: React.FC = () => {
   return (
     <Flex justify="right" width="full">
       <Button leftIcon={<FiLogOut />} onClick={revokeToken} fontWeight={400} fontSize="0.8em">
-        {useLocaleValue({ ja: 'ログアウト', en: 'Log out', zh: '登出', kr: '로그아웃' })}
+        {t.COMPONENTS.BUTTONS.LOGOUT.TEXT}
       </Button>
     </Flex>
   );

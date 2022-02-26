@@ -48,7 +48,7 @@ const ScoreDetail: React.FC<Level> = ({ name, title, cover, author, rating }) =>
 
       <Box
         position="relative"
-        backgroundImage={`${process.env.API_URL_LEGACY}${cover.url}`}
+        backgroundImage={`${process.env.SONOLUS_API}${cover.url}`}
         backgroundSize="cover"
         backgroundPosition="center center"
       >
@@ -68,7 +68,7 @@ const ScoreDetail: React.FC<Level> = ({ name, title, cover, author, rating }) =>
                 <AspectRatio ratio={[1]}>
                   <Flex align="center" justify="center">
                     <Image
-                      src={`${process.env.API_URL_LEGACY}${cover.url}`}
+                      src={`${process.env.SONOLUS_API}${cover.url}`}
                       alt=""
                       boxSize={{ base: '90%', lg: '70%' }}
                       borderRadius="base"

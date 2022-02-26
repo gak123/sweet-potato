@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   distDir: 'build',
   reactStrictMode: true,
@@ -8,11 +9,14 @@ const nextConfig = {
     defaultLocale: 'ja',
   },
   env: {
-    API_URL:
-      process.env.NODE_ENV === 'production' || process.env.MODE === 'real'
-        ? 'https://sp-0.sweet-potato.workers.dev'
-        : 'https://stoplight.io/mocks/sonolus-core/servers/36101371',
-    API_URL_LEGACY: 'https://sp-0.sweet-potato.workers.dev',
+    API:
+      process.env.NODE_ENV === 'production'
+        ? 'https://api.sweet-potato.dev'
+        : 'http://localhost:8080',
+    SONOLUS_API:
+      process.env.MODE === 'mock'
+        ? 'https://stoplight.io/mocks/sonolus-core/servers/36101371'
+        : 'https://sp-0.sweet-potato.workers.dev',
   },
 };
 

@@ -1,4 +1,18 @@
 export default {
+  COMPONENTS: {
+    BUTTONS: {
+      LOGIN: {
+        TEXT: 'ログイン',
+        MODAL: {
+          TITLE: 'ログイン失敗',
+          ERROR: '時間をあけて再度お試しください。',
+        },
+      },
+      LOGOUT: {
+        TEXT: 'ログアウト',
+      },
+    },
+  },
   PAGES_MENU: {
     LEVELS: '譜面',
     ENGINES: 'エンジン',

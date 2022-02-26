@@ -1,11 +1,11 @@
 /* eslint-disable */
-import type * as Types from '../../../@types'
+import type * as Types from '../../../@types';
 
 export type Methods = {
   /** テスト個別の情報一覧を返します */
   get: {
-    status: 200
+    status: 200;
     /** OK */
-    resBody: Types.ServerInfo
-  }
-}
+    resBody: Types.ServerInfo;
+  };
+};

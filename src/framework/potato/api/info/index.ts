@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type * as Types from '../@types'
+import type * as Types from '../@types';
 
 export type Methods = {
   /**
@@ -7,8 +7,8 @@ export type Methods = {
    * (It should be trimed if the server has too many items)
    */
   get: {
-    status: 200
+    status: 200;
     /** OK */
-    resBody: Types.ServerInfo
-  }
-}
+    resBody: Types.ServerInfo;
+  };
+};

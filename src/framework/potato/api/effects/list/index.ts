@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type * as Types from '../../@types'
+import type * as Types from '../../@types';
 
 export type Methods = {
   /**
@@ -7,9 +7,16 @@ export type Methods = {
    * Also it can search using query params
    */
   get: {
-    query?: Types.Localization & Types.Page & Types.Keywords & Types.Sort & Types.Order & Types.Status & Types.Author & Types.Random
-    status: 200
+    query?: Types.Localization &
+      Types.Page &
+      Types.Keywords &
+      Types.Sort &
+      Types.Order &
+      Types.Status &
+      Types.Author &
+      Types.Random;
+    status: 200;
     /** OK */
-    resBody: Types.GetEffectListResponse
-  }
-}
+    resBody: Types.GetEffectListResponse;
+  };
+};

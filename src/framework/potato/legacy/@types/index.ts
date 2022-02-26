@@ -1,37 +1,37 @@
 /* eslint-disable */
-import type { ReadStream } from 'fs'
+import type { ReadStream } from 'fs';
 
 export type Localization = {
   /** It localizes response items if possible */
-  localization?: string
-}
+  localization?: string;
+};
 
 export type Page = {
   /** It filters items for pagination if possible */
-  page?: number
-}
+  page?: number;
+};
 
 export type Keywords = {
   /** It filters items for search from list if possible */
-  keywords?: string
-}
+  keywords?: string;
+};
 
 export type Version = {
   /** Sonolus client version */
-  'sonolus-version': string
-}
+  'sonolus-version': string;
+};
 
 /** Struct of post upload response */
 export type PostUploadResponse = {
   /** Response status in human readable */
-  message: string
+  message: string;
   /** Created filename */
-  filename?: string
-}
+  filename?: string;
+};
 
 export type Upload = {
-  file: File | ReadStream
-}
+  file: File | ReadStream;
+};
 
 /**
  * A level provides a list of entities and powered by scripted behavior in engine, with skin, effect, background and particle, to create gameplay experience for players / It defines level for actual user play. It includes all data to play one level.
@@ -39,66 +39,66 @@ export type Upload = {
  */
 export type Level = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** Difficulty of the level */
-  rating: number
+  rating: number;
   /** Just a name of engine (Sonolus-express finds the engine from db) */
-  engine: string
+  engine: string;
 
   useSkin?: {
     /** If true (recommended), default resource specified by the engine will be used. */
-    useDefault: boolean
-    item: Skin
-  }
+    useDefault: boolean;
+    item: Skin;
+  };
 
   useBackground?: {
     /** If true (recommended), default resource specified by the engine will be used. */
-    useDefault: boolean
-    item: Background
-  }
+    useDefault: boolean;
+    item: Background;
+  };
 
   useEffect?: {
     /** If true (recommended), default resource specified by the engine will be used. */
-    useDefault: boolean
-    item: Effect
-  }
+    useDefault: boolean;
+    item: Effect;
+  };
 
   useParticle?: {
     /** If true (recommended), default resource specified by the engine will be used. */
-    useDefault: boolean
-    item: Particle
-  }
+    useDefault: boolean;
+    item: Particle;
+  };
 
-  title: LocalizationText
-  artists: LocalizationText
-  author: LocalizationText
-  cover: SonolusResourceLocator
-  bgm: SonolusResourceLocator
-  data: SonolusResourceLocator
+  title: LocalizationText;
+  artists: LocalizationText;
+  author: LocalizationText;
+  cover: SonolusResourceLocator;
+  bgm: SonolusResourceLocator;
+  data: SonolusResourceLocator;
   /** 独自要素: 楽曲のジャンル */
-  genre: string
+  genre: string;
   /** 独自要素: 楽曲が全体公開かどうか */
-  public?: boolean
+  public?: boolean;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId?: string
+  userId?: string;
   /** 独自要素: 譜面内のノーツ数 */
-  notes?: number
+  notes?: number;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime?: number
+  createdTime?: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime?: number
-  description: LocalizationText
+  updatedTime?: number;
+  description: LocalizationText;
   /** 独自要素: サムネのハッシュ値(DBを兼ねるため) */
-  coverHash?: string
+  coverHash?: string;
   /** 独自要素: データのハッシュ(DBを兼ねるため) */
-  dataHash?: string
+  dataHash?: string;
   /** 独自要素: BGMのハッシュ(DBを兼ねるため) */
-  bgmHash?: string
+  bgmHash?: string;
   /** 独自要素: プレイされた回数 */
-  playCount?: number
-}
+  playCount?: number;
+};
 
 /**
  * A skin provides graphic elements to levels / It defines graphics for specific level
@@ -107,27 +107,27 @@ export type Level = {
  */
 export type Skin = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** base title of this content */
-  title: string
+  title: string;
   /** something footer(ex. featuring xyz) for this content */
-  subtitle: string
+  subtitle: string;
   /** author of this content */
-  author: string
-  thumbnail: SonolusResourceLocator
-  data: SonolusResourceLocator
-  texture: SonolusResourceLocator
+  author: string;
+  thumbnail: SonolusResourceLocator;
+  data: SonolusResourceLocator;
+  texture: SonolusResourceLocator;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId: string
+  userId: string;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /**
  * A background provides background graphical element to levels / It defines background used for specific level
@@ -135,27 +135,27 @@ export type Skin = {
  */
 export type Background = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** base title of this content */
-  title: string
+  title: string;
   /** something footer(ex. featuring xyz) for this content */
-  subtitle: string
+  subtitle: string;
   /** author of this content */
-  author: string
-  thumbnail: SonolusResourceLocator
-  data: SonolusResourceLocator
-  image: SonolusResourceLocator
+  author: string;
+  thumbnail: SonolusResourceLocator;
+  data: SonolusResourceLocator;
+  image: SonolusResourceLocator;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId: string
+  userId: string;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /**
  * An effect provides audio elements to levels / It defines audio effect used for specific level
@@ -163,26 +163,26 @@ export type Background = {
  */
 export type Effect = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** base title of this content */
-  title: string
+  title: string;
   /** something footer(ex. featuring xyz) for this content */
-  subtitle: string
+  subtitle: string;
   /** author of this content */
-  author: string
-  thumbnail: SonolusResourceLocator
-  data: SonolusResourceLocator
+  author: string;
+  thumbnail: SonolusResourceLocator;
+  data: SonolusResourceLocator;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId: string
+  userId: string;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /**
  * A particle provides particle effect elements to levels / It defines particle effect used for specific level
@@ -190,27 +190,27 @@ export type Effect = {
  */
 export type Particle = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** base title of this content */
-  title: string
+  title: string;
   /** something footer(ex. featuring xyz) for this content */
-  subtitle: string
+  subtitle: string;
   /** author of this content */
-  author: string
-  thumbnail: SonolusResourceLocator
-  data: SonolusResourceLocator
-  texture: SonolusResourceLocator
+  author: string;
+  thumbnail: SonolusResourceLocator;
+  data: SonolusResourceLocator;
+  texture: SonolusResourceLocator;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId: string
+  userId: string;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /**
  * An engine provides scripted behaviors to levels / It defines shared game engine for playing
@@ -218,31 +218,31 @@ export type Particle = {
  */
 export type Engine = {
   /** english and number only name for searching */
-  name: string
+  name: string;
   /** Reserved for future update. current default is 1. */
-  version: number
+  version: number;
   /** base title of this content */
-  title: string
+  title: string;
   /** something footer(ex. featuring xyz) for this content */
-  subtitle: string
+  subtitle: string;
   /** author of this content */
-  author: string
-  thumbnail: SonolusResourceLocator
-  data: SonolusResourceLocator
-  configuration: SonolusResourceLocator
-  skin: Skin
-  background: Background
-  effect: Effect
-  particle: Particle
+  author: string;
+  thumbnail: SonolusResourceLocator;
+  data: SonolusResourceLocator;
+  configuration: SonolusResourceLocator;
+  skin: Skin;
+  background: Background;
+  effect: Effect;
+  particle: Particle;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: 譜面作成者のユーザーID */
-  userId: string
+  userId: string;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /**
  * Sonolus Resource Locator(SRL) is used in server endpoints in order for Sonolus to locate a resource.
@@ -251,150 +251,167 @@ export type Engine = {
  */
 export type SonolusResourceLocator = {
   /** When specify type together with hash uniquely identifies a resource. */
-  type: 'SkinData' | 'EngineThumbnail' | 'EffectData' | 'SkinTexture' | 'ParticleData' | 'EffectThumbnail' | 'LevelBgm' | 'BackgroundThumbnail' | 'EngineConfiguration' | 'LevelData' | 'ParticleTexture' | 'BackgroundData' | 'EngineData' | 'BackgroundImage' | 'LevelCover' | 'SkinThumbnail' | 'ParticleThumbnail'
+  type:
+    | 'SkinData'
+    | 'EngineThumbnail'
+    | 'EffectData'
+    | 'SkinTexture'
+    | 'ParticleData'
+    | 'EffectThumbnail'
+    | 'LevelBgm'
+    | 'BackgroundThumbnail'
+    | 'EngineConfiguration'
+    | 'LevelData'
+    | 'ParticleTexture'
+    | 'BackgroundData'
+    | 'EngineData'
+    | 'BackgroundImage'
+    | 'LevelCover'
+    | 'SkinThumbnail'
+    | 'ParticleThumbnail';
   /** Hash is calculated using SHA1 on the resource file */
-  hash: string
+  hash: string;
   /** If url starts with character /, it will be treated as relative path to server address. */
-  url: string
-}
+  url: string;
+};
 
 /** Response struct of getBackgroundList */
 export type GetBackgroundListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Background[]
-}
+  pageCount: number;
+  items: Background[];
+};
 
 /** Response struct of getEffectList */
 export type GetEffectListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Effect[]
-}
+  pageCount: number;
+  items: Effect[];
+};
 
 /** Response struct of getEngineList */
 export type GetEngineListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Engine[]
-}
+  pageCount: number;
+  items: Engine[];
+};
 
 /** Response struct of getLevelList */
 export type GetLevelListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Level[]
-}
+  pageCount: number;
+  items: Level[];
+};
 
 /** Response struct of getParticleList */
 export type GetParticleListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Particle[]
-}
+  pageCount: number;
+  items: Particle[];
+};
 
 /** Response struct of getSkinList */
 export type GetSkinListResponse = {
   /** used for pagination, default is 1 */
-  pageCount: number
-  items: Skin[]
-}
+  pageCount: number;
+  items: Skin[];
+};
 
 /** Response struct of getLevel */
 export type GetLevelResponse = {
-  item: Level
-  description: string
-  recommended: Level[]
-}
+  item: Level;
+  description: string;
+  recommended: Level[];
+};
 
 /** Response struct of getBackground */
 export type GetBackgroundResponse = {
-  item: Background
-  description: string
-  recommended: Background[]
-}
+  item: Background;
+  description: string;
+  recommended: Background[];
+};
 
 /** Response struct of getEffect */
 export type GetEffectResponse = {
-  item: Effect
-  description: string
-  recommended: Effect[]
-}
+  item: Effect;
+  description: string;
+  recommended: Effect[];
+};
 
 /** Response struct of getEngine */
 export type GetEngineResponse = {
-  item: Engine
-  description: string
-  recommended: Engine[]
-}
+  item: Engine;
+  description: string;
+  recommended: Engine[];
+};
 
 /** Response struct of getParticle */
 export type GetParticleResponse = {
-  item: Particle
-  description: string
-  recommended: Particle[]
-}
+  item: Particle;
+  description: string;
+  recommended: Particle[];
+};
 
 /** Response struct of getSkin */
 export type GetSkinResponse = {
-  item: Skin
-  description: string
-  recommended: Skin[]
-}
+  item: Skin;
+  description: string;
+  recommended: Skin[];
+};
 
 /** Response / Request struct of getServerInfo */
 export type ServerInfo = {
-  levels: Level[]
-  skins: Skin[]
-  backgrounds: Background[]
-  effects: Effect[]
-  particles: Particle[]
-  engines: Engine[]
-}
+  levels: Level[];
+  skins: Skin[];
+  backgrounds: Background[];
+  effects: Effect[];
+  particles: Particle[];
+  engines: Engine[];
+};
 
 /** ユーザー情報型 */
 export type User = {
   /** FirebaseDatabase上のユーザーID */
-  userId: string
+  userId: string;
   /** テスト用サーバーのエンドポイント */
-  testId: string
+  testId: string;
   /** 管理者か否か */
-  isAdmin: boolean
+  isAdmin: boolean;
   /** アカウント削除フラグ(trueで削除済み扱い) */
-  isDeleted: boolean
+  isDeleted: boolean;
   /** トータル譜面数 */
-  totalFumen: number
+  totalFumen: number;
   /** 独自要素: データを作成したエポックミリ秒(ソート用) */
-  createdTime: number
+  createdTime: number;
   /** 独自要素: データを更新したエポックミリ秒(ソート用) */
-  updatedTime: number
+  updatedTime: number;
   /** 独自要素: サイト内および譜面情報欄に表示される説明文 */
-  description: string
-}
+  description: string;
+};
 
 /** Structure of getList response */
 export type GetUserListResponse = {
   /** サーバーに登録されたユーザー一覧 */
-  users: User[]
+  users: User[];
   /** 合計アカウント数 */
-  total: number
+  total: number;
   /** 合計ページ数 */
-  pages: number
-}
+  pages: number;
+};
 
 export type LocalizationText = {
   /** Simplified Chinese */
-  cn?: string
+  cn?: string;
   /** TraditionalChinese */
-  tw?: string
+  tw?: string;
   /** Japanese */
-  ja: string
+  ja: string;
   /** English */
-  en?: string
+  en?: string;
   /** Korean */
-  ko?: string
+  ko?: string;
   /** Indonesian */
-  id?: string
+  id?: string;
   /** Spanish */
-  es?: string
-}
+  es?: string;
+};

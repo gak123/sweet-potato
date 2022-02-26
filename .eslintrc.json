@@ -55,5 +55,6 @@
       "files": ["*.js"],
       "rules": {}
     }
-  ]
+  ],
+  "ignorePatterns": ["**/framework/api/**"]
 }

@@ -99,7 +99,7 @@ const LevelList: React.FC = () => {
                           <Box w="100%" borderRadius="base">
                             <AspectRatio ratio={1}>
                               <Image
-                                src={`${process.env.API_URL_LEGACY}${level.cover.url}`}
+                                src={`${process.env.SONOLUS_API}${level.cover.url}`}
                                 alt=""
                                 objectFit="cover"
                                 borderRadius="base"

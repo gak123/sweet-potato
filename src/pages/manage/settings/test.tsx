@@ -42,7 +42,7 @@ const Test: React.FC = () => {
         ._userId(profile.uid)
         .$get({ config: { headers: { Authorization: `Bearer ${token}` } } });
 
-      setTestURL(`${process.env.API_URL}/test/${me.testId}`);
+      setTestURL(`${process.env.SONOLUS_API}/test/${me.testId}`);
     }
     callAPI();
   });

@@ -16,7 +16,7 @@ const ScoreSmall: React.FC<Level> = ({ name, title, rating, author, cover }) => 
         <GridItem colSpan={3}>
           <AspectRatio ratio={8 / 5}>
             <Image
-              src={`${process.env.API_URL_LEGACY}${cover.url}`}
+              src={`${process.env.SONOLUS_API}${cover.url}`}
               alt=""
               objectFit="cover"
               pointerEvents="none"

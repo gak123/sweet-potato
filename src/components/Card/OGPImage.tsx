@@ -89,7 +89,7 @@ const OGPImage = ({ title, author, cover, rating }: Level) => {
                     <Box w="100%">
                       <AspectRatio ratio={1}>
                         <Image
-                          src={`${process.env.API_URL_LEGACY}${cover.url}`}
+                          src={`${process.env.SONOLUS_API}${cover.url}`}
                           alt=""
                           objectFit="cover"
                           borderRadius="1em"

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type * as Types from '../../@types'
+import type * as Types from '../../@types';
 
 export type Methods = {
   /**
@@ -7,21 +7,21 @@ export type Methods = {
    * It will raise 404 if the engine is not registered in this server
    */
   get: {
-    status: 200
+    status: 200;
     /** OK */
-    resBody: Types.GetEngineResponse
-  }
+    resBody: Types.GetEngineResponse;
+  };
 
   /** 指定されたengineを編集します */
   patch: {
-    status: 200
+    status: 200;
     /** OK */
-    resBody: Types.GetEngineResponse
-    reqBody: Types.Engine
-  }
+    resBody: Types.GetEngineResponse;
+    reqBody: Types.Engine;
+  };
 
   /** delete a engine */
   delete: {
-    status: 200
-  }
-}
+    status: 200;
+  };
+};

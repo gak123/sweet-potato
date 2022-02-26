@@ -1,44 +1,80 @@
-import React from 'react';
-import { Button } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Button, Text } from '@chakra-ui/react';
 import { FiLogIn } from 'react-icons/fi';
+import { useLocale } from 'hooks/locales';
+import { useAuth } from 'hooks/auth';
+import { setCookie } from 'nookies';
+
+import { APIClient } from 'framework/api/api_client';
+import ErrorModal from 'components/Modal/Error';
 
 import firebase from 'framework/firebase/sdk';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useLocaleValue } from 'hooks/locales';
-import { useAuth } from 'hooks/auth';
 
 const provider = new GoogleAuthProvider();
 
 const Login: React.FC = () => {
   const { setStatus } = useAuth();
+  const { t } = useLocale();
+  const [error, setError] = useState<string>();
 
   const popupLogin = (): void => {
     const auth = getAuth(firebase);
     signInWithPopup(auth, provider).then(async () => {
       const idToken = await auth!.currentUser!.getIdToken();
 
-      fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: idToken,
-        }),
-      }).then((res) => {
-        if (res.status !== 200) return;
+      const client = new APIClient({
+        baseURL: process.env.API,
+      });
+
+      try {
+        const res = await client.auth
+          .postLogin({
+            Token: idToken,
+          })
+          .catch(() => {
+            throw new Error(t.COMPONENTS.BUTTONS.LOGIN.MODAL.ERROR);
+          });
+
+        const session = res.Session;
+
+        setCookie(undefined, 'token', session, {
+          maxAge: 60 * 60 * 24 * 14,
+          secure: true,
+          path: '/',
+        });
+
         setStatus({
           isLoaded: false,
           isAuthed: true,
         });
-      });
+      } catch (e) {
+        if (e instanceof Error) setError(e.message);
+      }
     });
   };
 
   return (
-    <Button leftIcon={<FiLogIn />} bgColor="potato" color="white" onClick={popupLogin} width="full">
-      {useLocaleValue({ ja: 'ログイン', en: 'Login', zh: '登錄', kr: '로그인' })}
-    </Button>
+    <>
+      <Button
+        leftIcon={<FiLogIn />}
+        bgColor="potato"
+        color="white"
+        onClick={popupLogin}
+        width="full"
+      >
+        {t.COMPONENTS.BUTTONS.LOGIN.TEXT}
+      </Button>
+      <ErrorModal
+        opened={error !== undefined}
+        title={t.COMPONENTS.BUTTONS.LOGIN.MODAL.TITLE}
+        onClose={() => {
+          setError(undefined);
+        }}
+      >
+        <Text>{error}</Text>
+      </ErrorModal>
+    </>
   );
 };
 

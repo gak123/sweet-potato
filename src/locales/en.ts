@@ -1,4 +1,18 @@
 export default {
+  COMPONENTS: {
+    BUTTONS: {
+      LOGIN: {
+        TEXT: 'Login',
+        MODAL: {
+          TITLE: 'Login Failed',
+          ERROR: 'Please try again latar.',
+        },
+      },
+      LOGOUT: {
+        TEXT: 'Log out',
+      },
+    },
+  },
   PAGES_MENU: {
     LEVELS: 'Scores',
     ENGINES: 'Engines',

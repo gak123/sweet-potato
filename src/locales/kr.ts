@@ -1,4 +1,18 @@
 export default {
+  COMPONENTS: {
+    BUTTONS: {
+      LOGIN: {
+        TEXT: '로그인',
+        MODAL: {
+          TITLE: 'Login Failed',
+          ERROR: 'Please try again latar.',
+        },
+      },
+      LOGOUT: {
+        TEXT: '로그아웃',
+      },
+    },
+  },
   PAGES_MENU: {
     LEVELS: 'Scores',
     ENGINES: 'Engines',
