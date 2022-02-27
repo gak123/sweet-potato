@@ -2,32 +2,32 @@ export default {
   COMPONENTS: {
     BUTTONS: {
       LOGIN: {
-        TEXT: '登錄',
+        TEXT: '登录',
         MODAL: {
-          TITLE: 'Login Failed',
-          ERROR: 'Please try again latar.',
+          TITLE: '呀呀！登录失败了！',
+          ERROR: '要不...等一会再试试？',
         },
       },
       LOGOUT: {
-        TEXT: '登出',
+        TEXT: '退出',
       },
     },
   },
   PAGES_MENU: {
-    LEVELS: 'Scores',
-    ENGINES: 'Engines',
-    EFFECTS: 'Effects',
-    BACKGROUNDS: 'Backgrounds',
-    SKINS: 'Skins',
-    PARTICLES: 'Particles',
+    LEVELS: '谱面',
+    ENGINES: '引擎',
+    EFFECTS: '效果',
+    BACKGROUNDS: '背景',
+    SKINS: '皮肤',
+    PARTICLES: '粒子效果',
   },
   PAGE_ERROR: {
-    '404': 'お探しのページは見つかりませんでした。',
-    '500': 'サーバーでエラーが発生しました。',
+    '404': '这个页面似乎连夜跑路了喵......',
+    '500': '呀呀！出现bug了！怎么会变成这样(T A T)',
   },
   SEARCH: {
-    TITLE: 'Search',
-    KEYWORD: 'Keyword',
+    TITLE: '搜索',
+    KEYWORD: '关键词',
   },
   HEADER: {
     MYPAGE: '个人主页',
@@ -56,7 +56,7 @@ export default {
     TITLE: '标题',
     ARTISTS: '作曲者',
     AUTHOR: '谱师',
-    DESCRIPTION: '譜面の詳細',
+    DESCRIPTION: '谱面简介',
     GENRE: '分类',
     RATING: '谱面评分',
   },
